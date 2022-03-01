@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<body>
+    <input id="x" value="10">
+    <input id="y" value="20">
+    <input id="h" value="40">
+    <input id="w" value="50">
+    <input type="color" id="color">
+    <button onclick="drawEect()">Draw</button>
+    <canvas id="c1" width="500px" height="500px"></canvas>
+    <script>
+
+        const c1 = document.getElementById("c1")
+        const ctx = c1.getContext("2d");
+        const square = {
+            x: 50,
+            y: 50,
+            h: 100,
+            w: 12,
+            color: "red"
+        }
+
+        // this function know to work with sent onject square or with user input
+        function drawEect(sq) {
+            //clear canvas
+            ctx.clearRect(0, 0, 500, 500);
+
+            //create square from the input 
+            const temp = { x: x.value, y: y.value, h: h.value, w: w.value, color: color.value }
+
+            // if the sent object is undefined we work with user (or default data) input
+            if (sq === undefined)
+                sq = temp
+
+            //debug code
+            console.log(x.value)
+            console.log(sq.x, sq.y, sq.h, sq.w);
+
+            // set the color
+            ctx.fillStyle = sq.color;
+
+            // ctx.beginPath();
+            ctx.fillRect(sq.x, sq.y, sq.h, sq.w);
+        }
+
+        drawEect(square)
+        drawEect({
+            x: 20,
+            y: 130,
+            h: 10,
+            w: 200,
+            color: "blue"
+        })
+    </script>
+</body>
+
+</html>
